@@ -74,33 +74,49 @@ DATA = [
     # Forma de filtrar datos, No. 2
 
 def main():
-    pass
+    
+    all_python_devs = list(filter(lambda worker: worker["language"] == "python", DATA))
+    all_python_devs = list(map(lambda worker: worker["name"], all_python_devs))
+    # all_python_devs = [worker["name"] for worker in DATA if worker["language"] == "python"] #lista que contiene el nombre de los trabajadores en DATA si los trabajadores manejan python
 
+    all_platzi_workers = list(filter(lambda worker: worker["organization"] == "Platzi", DATA))
+    all_platzi_workers = list(map(lambda worker: worker["name"], all_platzi_workers))
+    # all_platzi_workers = [worker["name"] for worker in DATA if worker["organization"] == "Platzi"] #Lista de los trabajadores en DATA que contiene el nombre de los trabajadores si trabajan en Platzi
 
-    # Forma de filtrar datos, No.1
+    adults = [worker["name"] for worker in DATA if worker["age"] > 18]
+    # age = [worker["age"] for worker in DATA if worker["age"] > 18]
+    # adults = list(filter(lambda worker: worker["age"] > 18, DATA)) #filtrando datos, de los trabajadores en DATA son mayores de 18 años
+    # adults = list(map(lambda worker: worker["name"], adults)) #mapeando los datos de la variable "adults" para obtener su nombre
 
-# def main(): #funcion para filtrar datos
-#     all_python_devs = [worker["name"] for worker in DATA if worker["language"] == "python"] #lista que contiene el nombre de los trabajadores en DATA si los trabajadores manejan python
+    
+    old_people = [worker["name"] for worker in DATA if worker["age"] > 70]
+    olds = [worker["age"] for worker in DATA if worker["age"] > 70]
 
-#     all_platzi_workers = [worker["name"] for worker in DATA if worker["organization"] == "Platzi"] #Lista de los trabajadores en DATA que contiene el nombre de los trabajadores si trabajan en Platzi
+    # old_people = list(map(lambda worker: {**worker, **{"old": worker["age"] > 70}}, DATA)) #mapeando DATA de los trabajadores que son mayores de 70 años y creando un valor de "Verdadero o Falso" dentro de la DATA
 
-#     adults = list(filter(lambda worker: worker["age"] > 18, DATA)) #filtrando datos, de los trabajadores en DATA son mayores de 18 años
+    print("\nPersons over 70 years of age:\n")
+    for workerito in olds:
+        for worker in old_people: #Ciclo for de los trabajadores en la variable "old_people"
+            print(worker, workerito)
+            #Mostramos en pantalla los nombres de los trabajadores
 
-#     adults = list(map(lambda worker: worker["name"], adults)) #mapeando los datos de la variable "adults" para obtener su nombre
+    print("\nPersons over 18 years of age:\n")
+    for worker in adults:#Ciclo for de los trabajadores en la variable "adults"
+        print(worker)
+            #Mostramos en pantalla los nombres de los trabajadores
 
-#     old_people = list(map(lambda worker: {**worker, **{"old": worker["age"] > 70}}, DATA)) #mapeando DATA de los trabajadores que son mayores de 70 años y creando un valor de "Verdadero o Falso" dentro de la DATA
+    print("\nPeople working at Platzi:\n")
+    for worker in all_platzi_workers: #Ciclo for de los trabajadores en la variable "all_platzi_workers"
+        print(worker) 
+        #Mostramos en pantalla los nombres de los trabajadores
 
-#     for worker in old_people: #Ciclo for de los trabajadores en la variable "old_people"
-#         print(worker) #Mostramos en pantalla los nombres de los trabajadores
-
-#     for worker in adults: #Ciclo for de los trabajadores en la variable "adults"
-#         print(worker) #Mostramos en pantalla los nombres de los trabajadores
-
-#     for worker in all_platzi_workers: #Ciclo for de los trabajadores en la variable "all_platzi_workers"
-#         print(worker) #Mostramos en pantalla los nombres de los trabajadores
-
-#     for worker in all_python_devs: #Ciclo for de los trabajadores en la variable "all_platzi_workers"
-#         print(worker) #Mostramos en pantalla los nombres de los trabajadores
+        
+    print("\nPeople who have Python as their primary language:\n")
+    for worker in all_python_devs: #Ciclo for de los trabajadores en la variable "all_platzi_workers"
+        print(worker)
+    print() 
+        #Mostramos en pantalla los nombres de los trabajadores
+    
 
 if __name__ == '__main__':
     main()
