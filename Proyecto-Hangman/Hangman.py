@@ -30,16 +30,29 @@ def menu():
     2) ¿Desea salir del juego?
     (1) o (2):
     R:// '''
+
     opciones = int(input(f'\t{menu}'))
 
-    if opciones == 1:
-        return hangman()
-    elif opciones == 2:
-        print('Adios')
-        time.sleep(1)
-    else:
-        print('Ingrese una opcion valida por favor')
-        time.sleep(2)
+    try:
+        if opciones == 1:
+            return hangman()
+        if opciones == 2:
+            print('Adios')
+            time.sleep(1)
+        if opciones > 2:
+            print('Ingrese una opcion valida por favor')
+            time.sleep(2)
+            print('Intente otra vez')
+            time.sleep(2)
+            main()
+        if opciones <= 0:
+            print('Ingrese una opcion valida por favor')
+            time.sleep(2)
+            print('Intente otra vez')
+            time.sleep(2)
+            main()
+    except ValueError:
+        print('Ingrese un valor valido')
         print('Intente otra vez')
         time.sleep(2)
         main()
